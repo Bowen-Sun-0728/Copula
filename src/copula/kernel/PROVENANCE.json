@@ -1,0 +1,30 @@
+{
+ "note": "byte-identical copies; tests/test_provenance.py checks them",
+ "sha256": {
+  "__init__.py": "e801ae83d7b89cc41cc2126bec4eef786883d57a3b565a5f5813efc01d07c6e0",
+  "client.py": "3afd8973e9bb20e1374cc7bd0eb4f2ee7b948c4d91167849ada055ee0b05ec83",
+  "core/__init__.py": "035a7e47a43fd1cb201cfe3d146428ac546973c61c71b8d5807a97a3758593a6",
+  "core/canon.py": "8e152b2c5f312294c688eddd87664f143d01a4bf550d6177d920977f84cdb1b8",
+  "core/design.py": "5cd60ba4705f06d92359951ffccbb0abe5d7ead84082b612f377b3f5da0d978e",
+  "core/key.py": "e169821938384fb6868b65ec49b243265117c6258ec3255a0afd95459592a502",
+  "core/request.py": "796ed0a3489ab9080b3c25b58c10cea9ecedeca8e3e952cd6eec46040309111e",
+  "errors.py": "32cb8d717bc6c01db8f1f6137075122cb65d7e048dda865f56228024354b10d1",
+  "manager/__init__.py": "a158aedfd33b5de9aca191539d2dc41990a8e579760c170230b1e46fbe65e779",
+  "manager/__main__.py": "8004cb76803a6f10172b72b6cd26cdcab8ecc351951c8825af99b2b7b686c84d",
+  "manager/flights.py": "312d243df3104117e4922e55d51d12158237efbd745eb3a01aa81feb7e211e25",
+  "manager/ledger.py": "ffdc955334f50aa46ad896bb6132e97483392afdda22d3d0f8edd926f83c095b",
+  "manager/model.py": "07508b9dae564c11aaf0117894c0b9862c9dfcc4a34937fdbbb7e7945727ba89",
+  "manager/server.py": "eabd26d7f97506df0dd9c850f7358d99e912ace371a38d44acb81bccd58205bb",
+  "manager/vllm_client.py": "c38da438e348811ca75fcc611b205c7d4bec3746952f6fa3f073265ec2ffc143",
+  "rpc.py": "74a7f194e997e6058cb4d11313f64d2c0a87d404561af9b1a24edf0d4186a6f1",
+  "sdk/__init__.py": "b2e7cd542ad1c1be7529d8e07a7be22d106a94d955a1b4e8dd209ea97f739e51",
+  "sdk/session.py": "0f805b5baca2ba60e0248aa56718f2ecf6722e96a8ee71f2bade1d985f4c8efd",
+  "store/__init__.py": "0ab171c3f908c762b9c504f7282d12bdaaca1ae414990987489219d1610ce993",
+  "store/entries.py": "dfb6e759ccf10e365fa97fe07f4fd50d9b2730c9b2e5db37f9b5c12de73f9d1c",
+  "testing/__init__.py": "02f91f0490eccb445141edbb3d33355accf62180126845c83a329a33e0b2e85b",
+  "testing/fake_vllm.py": "676614156e6c34f8ca3a37fcf80a3262764b9d4ec60fb0f17787afb7e3708ed6",
+  "testing/mock_model.py": "d35af20c58a55203ba0f60869d4b034995b58a43e4d43fc83b86e9aa9697730b",
+  "testing/rig.py": "08eaff1ffb74b5866a9e520c7ca698c6ff38c2a183047dee44417a39fb957210"
+ },
+ "source": "evalrt (the paper's frozen tree, src digest 54efa3fe)"
+}

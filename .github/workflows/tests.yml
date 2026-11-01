@@ -1,0 +1,39 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: unit and end-to-end tests (mock model)
+        run: PYTHONPATH=src:. python -m unittest discover -s tests -t . -v
+      - name: client tests and documentation examples (openai, anthropic)
+        run: |
+          python -m pip install openai anthropic
+          PYTHONPATH=src:. COPULA_ANTHROPIC_PYTHON=$(which python) python -m unittest -v tests.test_copula_clients tests.test_docs
+      - name: build and install
+        run: |
+          python -m pip install build
+          python -m build
+          python -m pip install dist/*.whl
+          cd /tmp && copula --help
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: build the documentation site
+        run: |
+          python -m pip install "mkdocs>=1.6,<2" "mkdocs-material>=9.5,<10"
+          mkdocs build --strict

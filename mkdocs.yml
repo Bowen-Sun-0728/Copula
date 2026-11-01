@@ -1,0 +1,70 @@
+site_name: Copula
+site_description: Reruns, edits and comparisons of agent programs share model samples, and every run still sees fresh, independent draws.
+docs_dir: docs
+strict: true
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/brightness-7, name: Dark mode}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/brightness-4, name: Light mode}
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+validation:
+  links:
+    not_found: warn
+    anchors: warn
+    unrecognized_links: warn
+
+nav:
+  - Home: index.md
+  - Get started:
+    - Install: getting-started/install.md
+    - Quickstart: getting-started/quickstart.md
+  - Guides:
+    - Run an existing program: guides/existing-programs.md
+    - Connect a model server: guides/model-servers.md
+    - Compare, repeat and sweep: guides/compare-and-repeat.md
+    - Prompt and harness optimizers: guides/optimizers.md
+    - One server for many runs: guides/project-server.md
+    - "Why was this call generated?": guides/why-generated.md
+  - Concepts:
+    - How Copula works: concepts/how-it-works.md
+    - Runs, coordinates and versions: concepts/runs-and-coordinates.md
+    - When two calls are the same: concepts/identical-calls.md
+    - Guarantees and limits: concepts/guarantees.md
+    - Comparison with other tools: concepts/comparison.md
+  - Reference:
+    - Command line: reference/cli.md
+    - Coordinate names and recipes: reference/coordinates.md
+    - Python API: reference/python.md
+    - HTTP interface: reference/http.md
+    - Files and environment: reference/files-and-env.md
+    - Messages: reference/messages.md
+  - Project:
+    - Development: project/development.md
