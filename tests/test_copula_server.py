@@ -1,4 +1,5 @@
-"""`copula server`: one server per project serves concurrent `copula run`s (DESIGN.md §3.2 item 1).
+"""`copula server`: one server per project serves concurrent `copula run`s
+(docs/guides/project-server.md).
 
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_server
 """

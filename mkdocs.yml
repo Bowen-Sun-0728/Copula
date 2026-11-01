@@ -1,5 +1,10 @@
 site_name: Copula
 site_description: Reruns, edits and comparisons of agent programs share model samples, and every run still sees fresh, independent draws.
+site_url: https://bowen-sun-0728.github.io/Copula/
+repo_url: https://github.com/Bowen-Sun-0728/Copula
+repo_name: Bowen-Sun-0728/Copula
+edit_uri: edit/main/docs/
+copyright: Apache License 2.0
 docs_dir: docs
 strict: true
 

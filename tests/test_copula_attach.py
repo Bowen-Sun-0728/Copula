@@ -1,5 +1,5 @@
-"""Copula preliminary implementation: copula.attach and its adapters (src/copula/attach.py,
-adapters/; DESIGN.md §10.3), against small fake `dspy` and `gepa` packages written here, so the
+"""Copula: copula.attach and its adapters (src/copula/_attach.py, adapters/;
+docs/guides/optimizers.md), against small fake `dspy` and `gepa` packages written here, so the
 test needs neither. Real DSPy and GEPA runs are in tests.test_copula_clients. No GPU:
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_attach
 """

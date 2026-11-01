@@ -1,4 +1,4 @@
-"""Regression tests of the round-3 review (reports/opensource_20261022/pkg/README.md, findings).
+"""Regression tests of the defects found by a code review before the first release.
 
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_regressions
 """

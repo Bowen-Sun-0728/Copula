@@ -1,4 +1,4 @@
-"""Upstream model servers of a Copula server (DESIGN.md §3.2 items 1, 6, 8; §10.2 item 3).
+"""Upstream model servers of a Copula server (docs/guides/model-servers.md).
 
     --upstream URL [--served-model NAME] [--model-dir DIR] [--defaults JSON|@FILE]
                    [--identity-extra JSON|@FILE] [--engine-seed auto|address|off]
@@ -12,12 +12,12 @@ Kinds, told apart by GET /models (`owned_by`):
 - vllm, sglang (self-hosted). Every sampling parameter is sent explicitly, from a pinned table:
   --defaults, else the model's generation_config.json (what vLLM applies by default, so behaviour
   is native), else neutral values (a note says so). A LoRA adapter takes its base model's table.
-  The identity is established (V5) only from model files the server itself loaded: --model-dir,
+  The identity is established only from model files the server itself loaded: --model-dir,
   or the local directory the server reports as `root` when the server runs on this host; it
   covers config, tokenizer and every weight file (shards too; a re-saved checkpoint is a new
   revision). A Hugging Face id or a remote server gives the sampling table from this host's cache
   but no established identity: greedy calls are then cached per group (W12). vLLM requests carry
-  an engine seed derived from the sample address (an HMAC under the store secret, §3.2 item 6):
+  an engine seed derived from the sample address (an HMAC under the store secret):
   a sample never depends on the server's --seed.
 - api (any other OpenAI-compatible endpoint). temperature, top_p and the penalties are always sent
   (from the table, OpenAI's defaults, when the client set none), so a request with an explicit

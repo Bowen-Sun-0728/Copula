@@ -14,15 +14,18 @@ copula: run r-5e77ae7d7cf040a3 done: 6 calls: 3 reused, 3 generated, 0 joined
 copula:   3 generated: new request -- closest earlier request (run r-74437c2a66b94f2e): messages[0] (system): '...eply OK, or give a corrected answer.' -> '...eply OK, or explain the mistake.'
 ```
 
-It is the system of the paper *Copula: Sound Sharing of Stochastic Nodes*: `copula.kernel` is the
-paper's code, byte for byte (`tests/test_provenance.py` checks it).
+It is the system of the paper *Copula: Sound Sharing of Stochastic Nodes Across Runs of Agentic
+Systems*: `copula.kernel` is the paper's code, byte for byte
+([The paper and this repository](#the-paper-and-this-repository)).
 
 ## Install
 
-Python 3.9 or newer on Linux or macOS; standard library only. Copula is not on PyPI yet:
+Python 3.9 or newer on Linux; standard library only (macOS is not tested). Copula is not on PyPI
+yet; install it from this repository:
 
 ```text
-pip install .            # from a checkout of this repository
+git clone https://github.com/Bowen-Sun-0728/Copula.git
+pip install ./Copula
 copula --version
 ```
 
@@ -66,7 +69,8 @@ The [Quickstart](docs/getting-started/quickstart.md) takes five minutes and need
   [Python API](docs/reference/python.md), [HTTP interface](docs/reference/http.md),
   [Files and environment](docs/reference/files-and-env.md), [Messages](docs/reference/messages.md)
 
-`mkdocs serve` renders them as a site ([Development](docs/project/development.md)).
+The same pages as a site: https://bowen-sun-0728.github.io/Copula/ (`mkdocs serve` renders them
+locally; see [Development](docs/project/development.md)).
 
 ## What is guaranteed
 
@@ -77,6 +81,24 @@ on a sample the run has not read. Copula enforces C1 and C2; P is yours. Where o
 from native runs, and the limits of this version, are listed in
 [Guarantees and limits](docs/concepts/guarantees.md).
 
+## The paper and this repository
+
+- `copula.kernel` is the code the paper evaluated (the SDK, cache manager, store and keys), byte
+  for byte: `src/copula/kernel/PROVENANCE.json` records each file's sha256 and
+  `tests/test_provenance.py` checks them. Its interface, `copula.Session` with registered nodes,
+  `s.group()`, `s.run(group)`, `s.wrap(OpenAI())` and `s.intercept()`, is the one in the paper
+  ([The kernel API](docs/reference/python.md#the-kernel-api)).
+- `copula run`, coordinates, `copula server` and `copula explain` are a front end built on the
+  kernel after the paper's experiments; the paper does not evaluate them.
+- Not in this repository: the research code's static-graph executor and cluster tools, and the
+  experiment scripts and data. The `Session` methods for static graphs (`program`, `graph_bound`,
+  `execute`, `execute_sync`, `forecast`) need that code and raise `ImportError` here. The paper's
+  342 tests include tests of those parts; `tests/kernel` holds the 125 that cover the kernel.
+  The paper's runs of LiteLLM, LangGraph, LlamaIndex and the OpenAI Agents SDK were experiment
+  scripts; this repository tests the openai and anthropic clients, DSPy and GEPA.
+- Comments in `copula.kernel` and `tests/kernel` call the kernel by its research name, `evalrt`,
+  and cite design notes of the research repository (`reports/...`), which are not published.
+
 ## Development
 
 ```text
@@ -85,3 +107,7 @@ PYTHONPATH=src:. python -m unittest discover -s tests -t .
 
 `tests/kernel` holds the paper's kernel tests and `tests/test_docs.py` runs the documentation's
 examples. Tests that need openai, anthropic, DSPy or Node are skipped when they are absent.
+
+## License
+
+Apache License 2.0 ([LICENSE](LICENSE)).

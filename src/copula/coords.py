@@ -1,4 +1,4 @@
-"""Coordinates, their classes and the recipes that class them (DESIGN.md §4.2, §5; change V1).
+"""Coordinates, their classes and the recipes that class them (docs/reference/coordinates.md).
 
 A coordinate is a name and a value attached to a run. Its class decides what it does to sharing:
 
@@ -23,8 +23,8 @@ ANNOTATION = ('iteration', 'metric_key', 'workflow_name', 'group_id', 'trace_id'
 # output, log and save paths under other spellings (--output-path, --log_file, ...)
 ANNOTATION_RE = re.compile(r'^(o|out|output|log|logs|save|ckpt)(_?(dir|path|file|prefix))?$')
 
-# Names a recipe adds to the defaults (DESIGN §5). A recipe never moves an unknown name out of
-# replicate except through these lists or the user's overrides.
+# Names a recipe adds to the defaults (docs/reference/coordinates.md). A recipe never moves an
+# unknown name out of replicate except through these lists or the user's overrides.
 RECIPES = {
     'dev': {},
     'eval': {'compare': ('task', 'task_identifier', 'model_config', 'solver'),

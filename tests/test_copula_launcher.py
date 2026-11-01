@@ -1,5 +1,5 @@
-"""Copula preliminary implementation: `copula run` end to end with the embedded mock manager
-(reports/opensource_20261022/DESIGN.md §4.3, §10.2). A child Python program reads a prompt file
+"""Copula: `copula run` end to end with the embedded mock manager (docs/guides/existing-programs.md,
+docs/reference/cli.md). A child Python program reads a prompt file
 and asks two questions through OPENAI_BASE_URL; no GPU:
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_launcher
 """

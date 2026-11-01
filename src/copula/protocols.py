@@ -1,4 +1,4 @@
-"""Wire protocols of the Copula proxy (DESIGN.md §10.5, O8; preliminary).
+"""Wire protocols of the Copula proxy (docs/reference/http.md).
 
 The kernel serves chat completions. Each protocol here translates a client request into one chat
 request and renders the chat result back, buffered or as that protocol's server-sent events:
@@ -11,7 +11,7 @@ request and renders the chat result back, buffered or as that protocol's server-
                     tools, tool_choice, stop_sequences, top_k; ping events while generating
 
 Ids are derived from the sample's address (the chat id), so a replay returns the same ids and a
-later request that echoes them keys the same (§3.2 item 4). Anything a protocol cannot translate
+later request that echoes them keys the same. Anything a protocol cannot translate
 faithfully is refused with a 400 rather than silently changed: images and documents, server-side
 tools, extended thinking, reasoning effort, conversations, foreign response ids.
 

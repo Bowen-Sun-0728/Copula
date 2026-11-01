@@ -1,4 +1,4 @@
-"""GEPA adapter (DESIGN.md §5.1; preliminary). Installed by copula.attach when gepa is imported
+"""GEPA adapter (docs/guides/optimizers.md). Installed by copula.attach when gepa is imported
 (dspy.GEPA imports it too).
 
 - Each `ReflectiveMutationProposer.propose` (sample a parent and a minibatch, evaluate the parent,

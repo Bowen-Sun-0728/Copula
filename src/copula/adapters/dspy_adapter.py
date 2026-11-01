@@ -1,4 +1,4 @@
-"""DSPy adapter (DESIGN.md §10.3, §5.1; preliminary). Installed by copula.attach when dspy is
+"""DSPy adapter (docs/guides/optimizers.md). Installed by copula.attach when dspy is
 imported; the program is not changed.
 
 - Units: every top-level module call (a `dspy.Module` __call__/acall not inside another one) is a

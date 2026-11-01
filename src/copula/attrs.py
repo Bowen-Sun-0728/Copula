@@ -1,4 +1,4 @@
-"""Attributes of a model call when nobody declared them (DESIGN.md §6.2; O3, changes V2, V5).
+"""Attributes of a model call when nobody declared them (docs/concepts/identical-calls.md).
 
     temperature 0 or top_k 1, upstream identity established  -> cached, deterministic (global)
     temperature 0 or top_k 1, no established identity         -> cached, stochastic (W12)
@@ -7,7 +7,7 @@
     a server-side tool in the request (not type "function")  -> uncached
     anything else                                            -> cached, stochastic
 
-A seed selects a stream (change V2): it is part of the group, so each seed has its own numbered
+A seed selects a stream: it is part of the group, so each seed has its own numbered
 samples, and `n > 1` expands to the streams seed+i. The seed itself is not sent upstream; the
 engine seed of every generation is derived from its sample address (copula.upstream). Natively,
 identical seeded requests inside one run may return identical text on a seed-honouring server;
