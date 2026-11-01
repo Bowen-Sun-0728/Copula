@@ -1,16 +1,16 @@
 # Install
 
-Copula needs Python 3.9 or newer on Linux or macOS and nothing else: it uses only the standard
-library. Read tracing of Node programs needs Node 18.19 or newer.
+Copula needs Python 3.9 or newer on Linux and nothing else: it uses only the standard library
+(macOS is not tested). Read tracing of Node programs needs Node 18.19 or newer.
 
 Copula is not on PyPI yet. Install it from a checkout of the repository:
 
 ```text
-git clone <repository-url> copula
-pip install ./copula
+git clone https://github.com/Bowen-Sun-0728/Copula.git
+pip install ./Copula
 ```
 
-The extras install the clients that the tests and examples use: `pip install './copula[openai]'`,
+The extras install the clients that the tests and examples use: `pip install './Copula[openai]'`,
 `[anthropic]` or `[dspy]`. Copula does not need them itself.
 
 Check the installation:

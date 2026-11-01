@@ -1,1 +1,1 @@
-"""Framework adapters installed by copula.attach (DESIGN.md §10.3)."""
+"""Framework adapters installed by copula.attach (docs/guides/optimizers.md)."""

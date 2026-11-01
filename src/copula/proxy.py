@@ -1,4 +1,4 @@
-"""The model endpoint of a Copula server (DESIGN.md §10.5; preliminary).
+"""The model endpoint of a Copula server (docs/reference/http.md).
 
     POST <base>[/r/<token>]/v1/chat/completions    OpenAI Chat Completions
     POST <base>[/r/<token>]/v1/responses           OpenAI Responses (protocols.ResponsesProto)
@@ -13,24 +13,24 @@
                                                     counts, why}
 
 The run is named by X-Copula-Run: <token>, or by the path token for clients without header
-options (§10.2). Request headers (all optional):
-    X-Copula-Coords: k=v;k=v    a unit of the run with these coordinates (§4.1)
+options. Request headers (all optional):
+    X-Copula-Coords: k=v;k=v    a unit of the run with these coordinates
     X-Copula-Unit: <n>          the unit's ordinal among units with the same coordinates
-    X-Copula-Phase: holdout     a holdout unit (§4.2); without coordinates, one holdout unit
+    X-Copula-Phase: holdout     a holdout unit; without coordinates, one holdout unit
     X-Copula-Phase-Source: inferred   an adapter's guess: falls back to search on case overlap
-    X-Copula-Decision: <id>     a decision scope (§4.2)
-    X-Copula-Role: <role>       routed by the plan's routes (§4.4)
-    x-stainless-retry-count, Idempotency-Key: retry signals (§3.2 item 3)
+    X-Copula-Decision: <id>     a decision scope
+    X-Copula-Role: <role>       routed by the plan's routes
+    x-stainless-retry-count, Idempotency-Key: retry signals
 
 Response headers: x-copula-status, x-copula-rank, x-copula-group, x-copula-run, x-copula-rule.
-Streams are buffered (change V3): keep-alives while the sample is generated (an SSE comment, or
+Streams are buffered: keep-alives while the sample is generated (an SSE comment, or
 Anthropic's ping event), then the protocol's events; the x-copula fields come as a final SSE
 comment.
 
 A proxy serves only the process runs it was given (`url`), and refuses a run once it has ended:
 a new attempt of an ended run would re-read samples its client already received (C1).
 
-Retries (§3.2 item 3): a request carrying a retry signal re-reads an occurrence of the same request
+Retries: a request carrying a retry signal re-reads an occurrence of the same request
 in the same run whose response was not delivered and whose client connection is gone; any other
 request is a new occurrence. An occurrence is forgotten once a response (sample or error) was
 written to its client.

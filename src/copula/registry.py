@@ -1,7 +1,7 @@
-"""The experiment registry (DESIGN.md §4): runs and units, versions, slots, decision scopes and
-holdout checks, persisted in one SQLite file next to the store.
+"""The experiment registry (docs/concepts/runs-and-coordinates.md): runs and units, versions,
+slots, decision scopes and holdout checks, persisted in one SQLite file next to the store.
 
-Group and slot rules (§4.2):
+Group and slot rules:
     counter key = H(experiment, phase, granularity, replicate values, version[, case])
     slot        = the smallest s not yet used under the counter key (a decision scope: the first
                   member's slot if this member has not used it, else its own smallest unused one)
@@ -10,7 +10,7 @@ Compare coordinates and the version are left out of the group, so compared runs 
 values and cases are in it, so replicates and cases are separate. A run outside any experiment gets
 a fresh group (O1).
 
-Versions (§4.3): a run is an unchanged rerun of an earlier run of the experiment when its compare
+Versions: a run is an unchanged rerun of an earlier run of the experiment when its compare
 values are equal and every project file that run read still has the content it had; otherwise it
 is a new version. Matching and the slot claim happen in one write transaction, so launches at the
 same moment see each other. The safe direction is a rerun (new samples), so whatever is not known
@@ -212,7 +212,7 @@ class Registry:
         return {r[0] for r in self.db.execute('SELECT slot FROM slots WHERE counter=?', (counter,))}
 
     def _take_slot(self, counter, run_id, decision=None, kase=''):
-        """Inside a write transaction: claim a slot under `counter` (§4.2)."""
+        """Inside a write transaction: claim a slot under `counter`."""
         used = self._used(counter)
         smallest = 1
         while smallest in used:
@@ -233,8 +233,8 @@ class Registry:
     def process_run(self, experiment=None, recipe='dev', phase='search', coords=None,
                     overrides=None, version=None, run_id=None, digest_now=file_digest,
                     owner=None):
-        """Register a launched process as one run (§4.1), status 'running'. Without `version`,
-        the version is matched (§4.3) inside the same transaction as the slot claim."""
+        """Register a launched process as one run, status 'running'. Without `version`,
+        the version is matched inside the same transaction as the slot claim."""
         if phase not in PHASES:
             raise ValueError('phase is one of %s' % ', '.join(PHASES))
         coords = dict(coords or {})
@@ -342,7 +342,7 @@ class Registry:
             raise
         return rec
 
-    # -- Responses API chains (DESIGN §6.2) -----------------------------------------------------
+    # -- Responses API chains -------------------------------------------------------------------
 
     def put_response(self, rid, context, response):
         """Store an issued response: its chat context (input without instructions, plus the
@@ -360,7 +360,7 @@ class Registry:
         return None if row is None else json.loads(row[0])
 
     def route(self, rec, role, rule):
-        """The group of `role`'s calls in run `rec` under a plan route (§4.4)."""
+        """The group of `role`'s calls in run `rec` under a plan route."""
         if rule in (None, 'run', 'fresh') or rec['experiment'] is None:
             return rec['grp']                   # 'fresh' calls are uncached (proxy)
         if rule == 'global':
@@ -385,7 +385,7 @@ class Registry:
 
 
 def check_route(rule):
-    """A plan route (§4.4): run, global, fresh or per:<coordinate>."""
+    """A plan route: run, global, fresh or per:<coordinate>."""
     if rule in ('run', 'global', 'fresh') or (isinstance(rule, str) and rule.startswith('per:')
                                               and len(rule) > 4):
         return rule
@@ -393,5 +393,5 @@ def check_route(rule):
 
 
 def seed_group(group, seed):
-    """The group of seeded requests (change V2): the seed is part of the stream's identity."""
+    """The group of seeded requests: the seed is part of the stream's identity."""
     return 'g-' + h(group, 'seed', seed)

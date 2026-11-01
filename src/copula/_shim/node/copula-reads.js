@@ -1,5 +1,5 @@
-// Injected by `copula run --exp` into Node children through NODE_OPTIONS=--require (DESIGN.md
-// §4.3): records the project files the process reads and writes, in the format of the Python shim
+// Injected by `copula run --exp` into Node children through NODE_OPTIONS=--require.
+// It records the project files the process reads and writes, in the format of the Python shim
 // ('R path' / 'W path' lines appended to $COPULA_READS_FILE.<pid>), the ES modules it imports
 // (a module.register load hook, Node >= 18.19), and at exit the files of loaded CommonJS modules
 // and the entry script ('M path'). Outside $COPULA_PROJECT, .copula/, node_modules and VCS

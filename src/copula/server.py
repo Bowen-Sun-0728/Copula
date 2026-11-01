@@ -1,4 +1,4 @@
-"""The Copula server of a project (DESIGN.md §3.2 item 1, §10.2).
+"""The Copula server of a project (docs/guides/project-server.md).
 
     copula server [--project DIR] [--listen HOST[:PORT]] [model-server options]
 

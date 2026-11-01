@@ -146,6 +146,7 @@ $ python kernel_demo.py
 | `with s.run_sync(group):`, `async with s.run(group):` | a run in the group; `run_id=` resumes a run, re-reading its samples in order |
 | `s.chat_sync(model, messages, **params)`, `await s.chat(...)` | a call of a registered node inside a run |
 | `s.wrap(client)` | routes an `openai` client's chat completions through the session |
+| `with s.intercept():` | inside the block, routes every `openai` client in the process (those a framework creates too): a request whose `model` is a node registered here goes through the session, any other request goes out unchanged |
 | `s.close()`, `await s.aclose()` | closes the session |
 
 `copula.Group`, `copula.Run`, `copula.Namespace` (the response objects) and `copula.SDKError`

@@ -1,9 +1,9 @@
-"""In-process helpers for code running under `copula run` (DESIGN.md §10.3; preliminary).
+"""In-process helpers for code running under `copula run` (docs/reference/python.md).
 
     import copula
-    with copula.run(variant='strict', case=ex['id']):     # one unit (§4.1)
+    with copula.run(variant='strict', case=ex['id']):     # one unit
         r = copula.chat([{'role': 'user', 'content': q}], temperature=0.7)
-    with copula.decision():                               # a decision scope (§4.2)
+    with copula.decision():                               # a decision scope
         ...
     with copula.holdout():                                # units opened inside are holdout units
         ...
@@ -68,7 +68,7 @@ def run(**coords):
 
 @contextlib.contextmanager
 def decision(name=None):
-    """A decision scope: the units opened inside read one slot when they can (§4.2)."""
+    """A decision scope: the units opened inside read one slot when they can."""
     token = _push(decision=name or 'd-' + uuid.uuid4().hex[:16])
     try:
         yield
@@ -78,7 +78,7 @@ def decision(name=None):
 
 @contextlib.contextmanager
 def role(name):
-    """Calls made inside carry this role (routed by the plan's routes, §4.4)."""
+    """Calls made inside carry this role (routed by the plan's routes)."""
     token = _push(role=name)
     try:
         yield
@@ -88,7 +88,7 @@ def role(name):
 
 @contextlib.contextmanager
 def holdout():
-    """Units opened inside are holdout units: a new group space, cases must be new (§4.2)."""
+    """Units opened inside are holdout units: a new group space, cases must be new."""
     token = _push(phase='holdout')
     try:
         yield

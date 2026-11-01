@@ -1,5 +1,5 @@
-"""Copula preliminary implementation: the OpenAI-compatible proxy over the evalrt kernel, with the
-mock model (reports/opensource_20261022/DESIGN.md §3.2, §4, §10.5). No GPU:
+"""Copula: the OpenAI-compatible proxy over the kernel, with the mock model
+(docs/concepts/how-it-works.md, docs/reference/http.md). No GPU:
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_proxy
 """
 import asyncio
@@ -187,7 +187,7 @@ class ProxyTest(_Base):
         st, _, d = await self.call(uh, ask('x'), {'X-Copula-Coords': 'case=7'})
         self.assertEqual((st, d['error']['code']), (409, 'holdout_overlap'))
         st, _, d = await self.call(u, dict(ask('x'), logprobs=True))
-        self.assertEqual(st, 400)                          # outside the preliminary surface
+        self.assertEqual(st, 400)                          # a field this version refuses
 
 
     async def test_ended_and_foreign_runs_are_refused(self):

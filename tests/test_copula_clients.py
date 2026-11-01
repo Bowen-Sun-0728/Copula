@@ -1,9 +1,9 @@
-"""Copula preliminary implementation with real clients, unmodified, under `copula run` and the
-embedded mock manager: the openai package (plain, raw, streamed, n>1, timeout retries) and DSPy's
-LM. Skipped where the packages are missing; on Skipjack they are in the project venvs (compute
-nodes only):
-    PYTHONPATH=src:. <venvs>/runtime/bin/python -m unittest tests.test_copula_clients
-    COPULA_DSPY_PYTHON=<venvs>/dspy-20261001/bin/python   (for the DSPy test)
+"""Copula with real clients, unmodified, under `copula run` and the embedded mock manager: the
+openai package (plain, raw, streamed, n>1, timeout retries) and DSPy's LM. Skipped where the
+packages are missing; COPULA_DSPY_PYTHON and COPULA_ANTHROPIC_PYTHON name interpreters that have
+DSPy or anthropic:
+    PYTHONPATH=src:. python -m unittest tests.test_copula_clients
+    COPULA_DSPY_PYTHON=/path/to/python   (for the DSPy test)
 """
 import importlib.util
 import json

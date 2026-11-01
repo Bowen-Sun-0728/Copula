@@ -1,5 +1,5 @@
-"""Copula preliminary implementation: the Responses and Anthropic Messages protocols
-(src/copula/protocols.py; reports/opensource_20261022/DESIGN.md §10.5). Translation units, then the
+"""Copula: the Responses and Anthropic Messages protocols (src/copula/protocols.py;
+docs/reference/http.md). Translation units, then the
 proxy on the kernel's mock rig. No GPU, no SDKs:
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_protocols
 """

@@ -1,4 +1,4 @@
-"""Test helpers: a mock model whose replies are scripted by content (preliminary).
+"""Test helpers: a mock model whose replies are scripted by content.
 
 `ScriptedMock(nonce, script)` is the kernel's MockModel, except that a reply is
 `script(body, token)`, where `token` is the mock's per-sample content (a function of the sample's

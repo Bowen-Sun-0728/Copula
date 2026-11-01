@@ -1,4 +1,4 @@
-"""Injected by `copula run` into Python children (DESIGN.md §4.3, §10.2 item 7; preliminary).
+"""Injected by `copula run` into Python children (docs/concepts/runs-and-coordinates.md).
 
 Records the project files the process reads and writes, through a PEP 578 audit hook, as it goes:
 one line per new path ('R path' or 'W path') appended to $COPULA_READS_FILE.<pid>, and at exit the

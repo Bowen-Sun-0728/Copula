@@ -38,6 +38,11 @@ python tools/import_kernel.py SRC_DIR --tests TESTS_DIR
 It copies the kernel files, rewrites `PROVENANCE.json`, and ports the kernel's tests into
 `tests/kernel` (imports rewritten, static-graph tests skipped).
 
+The comments of the kernel and of `tests/kernel` call it by its research name, `evalrt`, and cite
+design notes of the research repository (`reports/...`), which are not published. The research
+code's static-graph executor stays behind, so the `Session` methods for static graphs (`program`,
+`graph_bound`, `execute`, `execute_sync`, `forecast`) raise `ImportError` in this package.
+
 ## Tests
 
 ```text
@@ -53,7 +58,7 @@ The suite needs only the standard library and runs against the mock model. Tests
 The pages are Markdown in `docs/`, built with MkDocs and the Material theme:
 
 ```text
-pip install mkdocs-material
+pip install '.[docs]'   # MkDocs 1.6 and Material 9, pinned in pyproject.toml
 mkdocs serve            # http://127.0.0.1:8000
 mkdocs build --strict   # what CI runs
 ```

@@ -1,4 +1,4 @@
-"""`copula.attach()`: framework integration inside the agent's process (DESIGN.md §10.3; O5, O8).
+"""`copula.attach()`: framework integration inside the agent's process (docs/guides/optimizers.md).
 
 Under `copula run --exp E` the launcher's sitecustomize calls attach() before the program starts,
 so a Python program needs no change. attach():

@@ -1,5 +1,5 @@
-"""Copula preliminary implementation: coordinates, the registry and call attributes
-(reports/opensource_20261022/DESIGN.md §4, §6.2). No manager, no model:
+"""Copula: coordinates, the registry and call attributes (docs/concepts/runs-and-coordinates.md,
+docs/reference/coordinates.md). No manager, no model:
     PYTHONPATH=src:. python3 -m unittest tests.test_copula_core
 """
 import os
@@ -16,7 +16,7 @@ class CoordsTest(unittest.TestCase):
     def test_default_classes(self):
         c = Classes()
         for name in ('seed', 'SLURM_ARRAY_TASK_ID', 'epoch', 'attempt', 'lr', 'split', 'foo'):
-            self.assertEqual(c.of(name), 'replicate', name)       # unknown names too (V1)
+            self.assertEqual(c.of(name), 'replicate', name)       # unknown names too
         for name in ('variant', 'candidate', 'prompt'):
             self.assertEqual(c.of(name), 'compare', name)
         for name in ('case', 'example', 'doc_id'):

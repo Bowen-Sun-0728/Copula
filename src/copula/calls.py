@@ -1,4 +1,5 @@
-"""The call log of a Copula server and the reasons behind each generated call (DESIGN.md §10.4).
+"""The call log of a Copula server and the reasons behind each generated call
+(docs/guides/why-generated.md).
 
 The proxy writes one row per answered request occurrence to .copula/calls.db: its run (process run
 and unit), group, node, request digest and statuses. Request bodies are kept once per digest, so

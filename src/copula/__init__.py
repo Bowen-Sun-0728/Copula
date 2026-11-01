@@ -9,8 +9,8 @@ Two ways in:
 - The kernel API of the paper: `copula.Session` with `s.group(name)`, `s.run(group)`,
   `s.wrap(OpenAI())` and registered nodes (copula.kernel.sdk).
 
-The kernel (copula.kernel) is the paper's frozen evalrt tree, byte for byte. Importing copula needs
-only the standard library.
+The kernel (copula.kernel) is the code the paper evaluated (research name: evalrt), byte for
+byte. Importing copula needs only the standard library.
 """
 from .client import chat, decision, headers, holdout, role, run  # noqa: F401
 

@@ -1,4 +1,4 @@
-"""The `copula` command (DESIGN.md §10.2).
+"""The `copula` command (docs/reference/cli.md).
 
     copula run [--exp NAME] [--recipe R] [--phase search|holdout] [--set k=v ...]
                [--compare k ...] [--annotate k ...] [--replicate k ...] [--case k ...]
@@ -8,12 +8,12 @@
     copula explain RUN [--calls] [--json]
     copula ls [--exp NAME]
 
-`run` registers the launched process as one run (§4.1) and serves it through the project's Copula
+`run` registers the launched process as one run and serves it through the project's Copula
 server: the live one (`copula server`, found in .copula/server.json, or --server URL with
 $COPULA_SERVER_TOKEN), else one embedded for this command. The child's OPENAI_BASE_URL,
 OPENAI_API_BASE, LLM_BASE_URL and ANTHROPIC_BASE_URL point to the run's URL; the embedded server's
 upstream is this process's own OPENAI_BASE_URL unless --upstream or --mock says otherwise. With
---exp the files the program reads define its version (§4.3): Python children are traced by an
+--exp the files the program reads define its version: Python children are traced by an
 audit hook and attached (copula.attach), Node children by a preload, others by --track GLOB. At
 the end one summary says what was reused, what was generated and why (`copula explain` has the
 details).
@@ -148,7 +148,7 @@ def _child_env(a, url, rec, project, state, reads_file, model):
                COPULA_EXP=a.exp or '', COPULA_MODEL=model or '')
     env.pop('COPULA_SERVER_TOKEN', None)
     if a.exp and not a.no_attach:
-        env['COPULA_ATTACH'] = '1'               # O8: auto-attach with --exp
+        env['COPULA_ATTACH'] = '1'               # auto-attach with --exp
     else:
         env.pop('COPULA_ATTACH', None)
     paths = [SHIM, _pylib(state)]                # the shim records reads; attach only with --exp
